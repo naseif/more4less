@@ -1,7 +1,7 @@
 import * as bl from "./BL/index"
 
 const searchEngines = new bl.SearchEngineList(
-    [new bl.AmazonPriceSearchEngine()]
+    [new bl.AmazonPriceSearchEngine2()]
 );
 
 (async () => {

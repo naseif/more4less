@@ -5,6 +5,6 @@ import { ISearchResult } from "./ISearchResult"
  * that give us prices!
  */
 
-export interface IPriceSearchEngine {
+export interface ISearchEngine {
     search(searchTerm: string): Promise<ISearchResult[]>;
 }

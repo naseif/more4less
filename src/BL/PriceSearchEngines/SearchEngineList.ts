@@ -1,12 +1,10 @@
-import { IPriceSearchEngine, ISearchResult } from "../../Interfaces/index";
+import { ISearchEngine, ISearchResult } from "../../Interfaces/index";
 import { SearchEngineBase } from "./SearchEngineBase";
 
-export class SearchEngineList extends SearchEngineBase {
-    searchEngines: IPriceSearchEngine[];
+export class SearchEngineList implements ISearchEngine {
+    searchEngines: ISearchEngine[];
 
-    constructor(searchEngines : IPriceSearchEngine[]) {
-        super();
-
+    constructor(searchEngines : ISearchEngine[]) {
         this.searchEngines = searchEngines;
     }
 

@@ -1,8 +1,8 @@
-import { IPriceSearchEngine, ISearchResult } from "../../Interfaces";
+import { ISearchEngine, ISearchResult } from "../../Interfaces";
 const fetch = require("node-fetch");
 const cheerio = require("cheerio");
 
-export abstract class SearchEngineBase implements IPriceSearchEngine {
+export abstract class SearchEngineBase implements ISearchEngine {
     abstract search(searchTerm: string): Promise<ISearchResult[]>;
 
     protected async requestWebsite(baseUrl: string, searchQuery: string) {
