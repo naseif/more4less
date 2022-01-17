@@ -1,4 +1,4 @@
-import { ISearchResult } from "./ISearchResult"
+import { ISearchResult } from './ISearchResult';
 
 /**
  * We scrape a big bunch of different web shops and maybe other systems

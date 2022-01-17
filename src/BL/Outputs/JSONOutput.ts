@@ -1,14 +1,14 @@
-import { writeFileSync } from "fs";
-import { IOutput, ISearchResult } from "../../Interfaces/index"
+import { writeFileSync } from 'fs';
+import { IOutput, ISearchResult } from '../../Interfaces/index';
 
 export class JSONOutput implements IOutput {
-    filePath: string
+    filePath: string;
 
     constructor(filePath: string) {
-        this.filePath = filePath
+        this.filePath = filePath;
     }
 
     outputData(searchResults: ISearchResult[]): void {
-        writeFileSync(this.filePath, JSON.stringify(searchResults), "utf8");
+        writeFileSync(this.filePath, JSON.stringify(searchResults), 'utf8');
     }
 }

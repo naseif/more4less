@@ -1,8 +1,7 @@
-import { IOutput, ISearchResult } from "../../Interfaces/index"
+import { IOutput, ISearchResult } from '../../Interfaces/index';
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 export class CsvOutput implements IOutput {
-
     filePath: string;
 
     constructor(filePath: string) {
@@ -18,13 +17,10 @@ export class CsvOutput implements IOutput {
                 { id: 'description', title: 'Description' },
                 { id: 'availability', title: 'Availability' },
                 { id: 'rating', title: 'Rating' },
-                { id: 'price', title: 'Price' },
+                { id: 'price', title: 'Price' }
             ]
         });
 
-        csvWriter
-            .writeRecords(searchResults)
-            .then(() => console.log('The CSV file was written successfully'));
+        csvWriter.writeRecords(searchResults).then(() => console.log('The CSV file was written successfully'));
     }
-
 }

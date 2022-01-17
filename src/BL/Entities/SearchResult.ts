@@ -1,4 +1,4 @@
-import { ISearchResult } from "../../Interfaces/ISearchResult";
+import { ISearchResult } from '../../Interfaces/ISearchResult';
 
 export class SearchResult implements ISearchResult {
     engine: string;

@@ -1,11 +1,9 @@
-import * as bl from "./BL/index"
+import * as bl from './BL/index';
 
-const searchEngines = new bl.SearchEngineList(
-    [new bl.AmazonPriceSearchEngine2()]
-);
+const searchEngines = new bl.SearchEngineList([new bl.AmazonPriceSearchEngine2(), new bl.AmazonPriceSearchEngine()]);
 
 (async () => {
-    var searchResults = await searchEngines.search("GTX 1060");
+    var searchResults = await searchEngines.search('Teller');
     console.log(searchResults);
 })();
 
@@ -19,7 +17,6 @@ const searchEngines = new bl.SearchEngineList(
 // const output: interfaces.IOutput = new bl.JSONOutput("test.json");
 
 // output.outputData(searchResults);
-
 
 // (async () => {
 //     const req = await fetch("https://www.amazon.de/s?k=firestick", { headers: { "User-Agent": "Mozilla/5.0 (Linux; U; Android 2.2; de-de; HTC Magic Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1" } });

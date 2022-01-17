@@ -1,4 +1,4 @@
-import { ISearchResult } from "./ISearchResult"
+import { ISearchResult } from './ISearchResult';
 
 /**
  * We have different output formats
