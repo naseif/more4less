@@ -1,7 +1,7 @@
 {
   "name": "more4less",
-  "version": "1.0.0",
-  "description": "A price search engine for various online shops",
+  "version": "1.1.0",
+  "description": "A price search engine for various german online shops",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
@@ -27,6 +27,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
     "csv-writer": "^1.6.0",
-    "node-fetch": "^2.6.6"
+    "node-fetch": "^2.6.6",
+    "typedoc": "^0.22.10"
   }
 }
