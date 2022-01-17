@@ -4,6 +4,13 @@ import { SearchEngineBase } from './SearchEngineBase';
 const cheerio = require('cheerio');
 
 export class EbayPriceSearchEngine extends SearchEngineBase {
+
+    /**
+     * Scrapes eBay for products based on your search query
+     * @param {string} searchTerm 
+     * @returns {ISearchResult[]}
+     */
+
     async search(searchTerm: string): Promise<ISearchResult[]> {
         const baseUrl = 'https://www.ebay.de';
         const $ = await this.requestWebsite(baseUrl + '/sch/i.html?_from=R40&_nkw=', searchTerm);

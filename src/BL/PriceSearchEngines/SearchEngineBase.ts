@@ -5,6 +5,13 @@ import * as cheerio from 'cheerio';
 export abstract class SearchEngineBase implements ISearchEngine {
     abstract search(searchTerm: string): Promise<ISearchResult[]>;
 
+    /**
+     * 
+     * @param {string} baseUrl baseUrl of the site to fetch
+     * @param {string} searchQuery string of the product you wish to search for
+     * @returns {Promise<cheerio.CheerioAPI>}
+     */
+
     protected async requestWebsite(baseUrl: string, searchQuery: string) {
         const searchQueryEncoded = encodeURIComponent(searchQuery);
         const req = await fetch(`${baseUrl}${searchQueryEncoded}`, {
