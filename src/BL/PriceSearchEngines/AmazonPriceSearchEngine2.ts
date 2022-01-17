@@ -12,6 +12,7 @@ export class AmazonPriceSearchEngine2 extends SearchEngineBase {
         let prices: any[] = [];
         let links: any[] = [];
         let ratings: any[] = [];
+        let thumbnails: any[] = [];
 
         let searchResultDivs = $('.s-result-item');
 
@@ -26,6 +27,7 @@ export class AmazonPriceSearchEngine2 extends SearchEngineBase {
                 prices.push($detail('.a-price-whole').text().trim());
                 links.push(baseUrl + $detail(".a-link-normal[title='product-image']").attr('href'));
                 ratings.push($detail('.a-icon-alt').text().trim());
+                thumbnails.push($detail('.s-image').attr('src'));
             }
         }
 
@@ -37,7 +39,8 @@ export class AmazonPriceSearchEngine2 extends SearchEngineBase {
                     links[index],
                     title,
                     this.grabFirstPartAsNumber(ratings[index]),
-                    this.grabFirstPartAsNumber(prices[index])
+                    this.grabFirstPartAsNumber(prices[index]),
+                    thumbnails[index]
                 )
             );
         });

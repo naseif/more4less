@@ -13,6 +13,7 @@ export class SaturnPriceSearchEngine extends SearchEngineBase {
         let links: any[] = [];
         let prices: any[] = [];
         let ratings: any[] = [];
+        let thumbnails: any[] = [];
 
         for (let i = 0; i < resultDivs.length; i++) {
             const thisResult = resultDivs[i];
@@ -24,12 +25,22 @@ export class SaturnPriceSearchEngine extends SearchEngineBase {
             ratings.push($detail('div[data-test=mms-customer-rating]').text());
             prices.push($detail('div[data-test=mms-unbranded-price]').text());
             links.push(baseUrl + $detail('a[data-test=mms-router-link]').attr('href'));
+            thumbnails.push($detail('div[data-test=product-image]').text());
         }
 
         let result: ISearchResult[] = [];
 
         titles.forEach((title: string, index: number) => {
-            result.push(new SearchResult(this.constructor.name, links[index], title, ratings[index], prices[index]));
+            result.push(
+                new SearchResult(
+                    this.constructor.name,
+                    links[index],
+                    title,
+                    ratings[index],
+                    prices[index],
+                    thumbnails[index]
+                )
+            );
         });
 
         return result;

@@ -1,5 +1,4 @@
 import { ISearchEngine, ISearchResult } from '../../Interfaces/index';
-import { SearchEngineBase } from './SearchEngineBase';
 
 export class SearchEngineList implements ISearchEngine {
     searchEngines: ISearchEngine[];

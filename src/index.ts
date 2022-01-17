@@ -10,7 +10,6 @@ const searchEngines = new bl.SearchEngineList([
 (async () => {
     var searchResults = await searchEngines.search('firestick');
     const output = new bl.JSONOutput('test.json');
-    output.outputData(searchResults);
     console.log(searchResults);
 })();
 

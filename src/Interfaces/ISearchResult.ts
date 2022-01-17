@@ -7,4 +7,5 @@ export interface ISearchResult {
     name: string;
     rating: number;
     price: number;
+    thumbnail: string;
 }

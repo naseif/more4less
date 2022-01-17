@@ -11,6 +11,7 @@ export class AmazonPriceSearchEngine extends SearchEngineBase {
         let prices: string[] = this.collectText($, '.a-price-whole');
         let links: string[] = this.collectLinks($, ".a-link-normal[title='product-image']", baseUrl);
         let ratings: string[] = this.collectText($, '.a-icon-alt');
+        let thumbnails: any[] = [];
 
         let result: ISearchResult[] = [];
 
@@ -21,7 +22,8 @@ export class AmazonPriceSearchEngine extends SearchEngineBase {
                     links[index],
                     title,
                     this.grabFirstPartAsNumber(ratings[index]),
-                    this.grabFirstPartAsNumber(prices[index])
+                    this.grabFirstPartAsNumber(prices[index]),
+                    thumbnails[index]
                 )
             );
         });
