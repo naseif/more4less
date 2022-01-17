@@ -1,8 +1,40 @@
+import { SearchResult } from '..';
 import { ISearchResult } from '../../Interfaces/index';
 import { SearchEngineBase } from './SearchEngineBase';
+const cheerio = require('cheerio');
 
-class EBayPriceSearchEngine extends SearchEngineBase {
-    search(searchTerm: string): Promise<ISearchResult[]> {
-        throw new Error('Method not implemented.');
+export class EbayPriceSearchEngine extends SearchEngineBase {
+    async search(searchTerm: string): Promise<ISearchResult[]> {
+        const baseUrl = 'https://www.ebay.de';
+        const $ = await this.requestWebsite(baseUrl + '/sch/i.html?_from=R40&_nkw=', searchTerm);
+
+        const divs = $('.s-item__info'); // an object containing info of each product
+
+        let titles: any[] = [];
+        let links: any[] = [];
+        let prices: any[] = [];
+        let ratings: any[] = [];
+
+        for (let i = 0; i < divs.length; i++) {
+            const thisResult = divs[i];
+            const htmlOfThisDiv = $.html(thisResult);
+            const $detail = cheerio.load(htmlOfThisDiv, {
+                xmlMode: true
+            });
+            if ($detail('.s-item__title').text() && $detail('.s-item__price').text()) {
+                titles.push($detail('.s-item__title').text().trim());
+                ratings.push($detail('.x-star-rating').text().trim());
+                links.push($detail('.s-item__link').attr('href'));
+                prices.push($detail('.s-item__price').text().trim());
+            }
+        }
+
+        let result: ISearchResult[] = [];
+
+        titles.forEach((title: string, index: number) => {
+            result.push(new SearchResult(this.constructor.name, links[index], title, ratings[index], prices[index]));
+        });
+
+        return result;
     }
 }

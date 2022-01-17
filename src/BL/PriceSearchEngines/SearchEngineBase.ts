@@ -34,17 +34,17 @@ export abstract class SearchEngineBase implements ISearchEngine {
         return result;
     }
 
-    protected collectLinks($: any, selector: string, baseUrl: string) {
+    protected collectLinks($: any, selector: string, baseUrl?: string) {
         let result: any[] = [];
 
         $(selector).each(function (index: number, value: any) {
-            result.push(baseUrl + $(value).attr('href').trim());
+            baseUrl ? result.push(baseUrl + $(value).attr('href').trim()) : result.push($(value).attr('href').trim());
         });
 
         return result;
     }
 
     protected grabFirstPartAsNumber(value: string): any {
-        if (value) return Number(value.split(/\s/)[0].replace(",", "."));
+        if (value) return Number(value.split(/\s/)[0].replace(',', '.'));
     }
 }
