@@ -8,4 +8,4 @@ export * from './PriceSearchEngines/EbayPriceSearchEngine';
 export * from './PriceSearchEngines/MediaMarktPriceSearchEngine';
 export * from './PriceSearchEngines/SaturnPriceSearchEngine';
 export * from './PriceSearchEngines/SearchEngineList';
-export * from "./PriceSearchEngines/SearchEngineBase"
+export * from './PriceSearchEngines/SearchEngineBase';

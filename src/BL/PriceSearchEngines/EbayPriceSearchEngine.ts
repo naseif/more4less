@@ -17,16 +17,22 @@ export class EbayPriceSearchEngine extends SearchEngineBase {
         let ratings: any[] = [];
         let thumbnails: any[] = [];
 
+        $('.s-item__link').each(function (index, value) {
+            links.push(value.attribs.href);
+        });
+
+        const deleteFirstLink = links.splice(0, 1); // the first link we get is not a valid one and it messes up the order of the links
+
         for (let i = 0; i < divs.length; i++) {
             const thisResult = divs[i];
             const htmlOfThisDiv = $.html(thisResult);
             const $detail = cheerio.load(htmlOfThisDiv, {
                 xmlMode: true
             });
+
             if ($detail('.s-item__title').text() && $detail('.s-item__price').text()) {
                 titles.push($detail('.s-item__title').text().trim());
                 ratings.push($detail('.x-star-rating').text().trim());
-                links.push($detail('s-item__link').attr('href'));
                 prices.push($detail('.s-item__price').text().trim());
             }
         }
@@ -40,7 +46,6 @@ export class EbayPriceSearchEngine extends SearchEngineBase {
 
             thumbnails.push($detail('.s-item__image-img').attr('src'));
         }
-
         let result: ISearchResult[] = [];
 
         titles.forEach((title: string, index: number) => {
