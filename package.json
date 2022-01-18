@@ -1,6 +1,6 @@
 {
   "name": "more4less",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "A price search engine for various german online shops",
   "main": "dist/index.js",
   "scripts": {
@@ -16,6 +16,15 @@
   "bugs": {
     "url": "https://github.com/naseif/more4less/issues"
   },
+  "keywords": [
+    "amazon-price-scraper",
+    "ebay-price-scraper",
+    "price-search-engine",
+    "price-scraper",
+    "ebay-price",
+    "amazon-price",
+    "search-price"
+  ],
   "homepage": "https://github.com/naseif/more4less#readme",
   "devDependencies": {
     "@types/node": "^17.0.8",
