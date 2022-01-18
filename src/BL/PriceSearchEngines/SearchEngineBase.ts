@@ -1,6 +1,7 @@
 import { ISearchEngine, ISearchResult } from '../../Interfaces';
 const fetch = require('node-fetch');
 import * as cheerio from 'cheerio';
+import { writeFileSync } from 'fs';
 
 export abstract class SearchEngineBase implements ISearchEngine {
     abstract search(searchTerm: string): Promise<ISearchResult[]>;
@@ -17,11 +18,10 @@ export abstract class SearchEngineBase implements ISearchEngine {
         const req = await fetch(`${baseUrl}${searchQueryEncoded}`, {
             headers: {
                 'User-Agent':
-                    'Mozilla/5.0 (Linux; U; Android 2.2; de-de; HTC Magic Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1'
+                    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36 Edge/12.246'
             }
         });
         const res = await req.text();
-
         const $ = cheerio.load(res, {
             xmlMode: true
         });
