@@ -2,10 +2,9 @@ import { SearchEngineBase, SearchResult } from '..';
 import { ISearchResult } from '../../Interfaces';
 
 export class ProshopPriceSearchEngine extends SearchEngineBase {
-
     /**
      * Scrapes Proshop.de for products based on your search query
-     * @param {string} searchTerm 
+     * @param {string} searchTerm
      * @returns {ISearchResult[]}
      */
 
