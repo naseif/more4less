@@ -12,6 +12,8 @@ Just wanted to practice web scraping :)
 - Amazon
 - MediaMarkt
 - Saturn
+- Proshop.de
+- Otto.de
 
 
 ## Installation
