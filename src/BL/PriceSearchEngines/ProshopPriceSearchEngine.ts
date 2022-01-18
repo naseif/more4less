@@ -19,7 +19,7 @@ export class ProshopPriceSearchEngine extends SearchEngineBase {
 
         $('li[product=""]')
             .find('a')
-            .each((index: number, value: any) => {
+            .each((_: number, value: any) => {
                 if ($(value).attr('href')?.startsWith('/') && !$(value).attr('href')?.includes('Demo')) {
                     links.push($(value).attr('href'));
                 }
@@ -27,7 +27,7 @@ export class ProshopPriceSearchEngine extends SearchEngineBase {
 
         $('li[product=""]')
             .find('a > img')
-            .each((index: number, value: any) => {
+            .each((_: number, value: any) => {
                 if ($(value).attr('src')) {
                     thumbnails.push($(value).attr('src'));
                 } else {

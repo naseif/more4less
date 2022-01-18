@@ -15,7 +15,7 @@ export class AmazonPriceSearchEngine extends SearchEngineBase {
 
         let titles: string[] = this.collectText($, '.s-title-instructions-style');
         let prices: string[] = this.collectText($, '.a-price-whole');
-        let links: string[] = this.collectLinks($, ".a-link-normal[title='product-image']", baseUrl);
+        let links: string[] = this.collectLinks($, ".a-link-normal[title='product-image']", 'href', baseUrl);
         let ratings: string[] = this.collectText($, '.a-icon-alt');
         let thumbnails: any[] = [];
 

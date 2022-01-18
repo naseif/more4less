@@ -1,7 +1,6 @@
 import { ISearchEngine, ISearchResult } from '../../Interfaces';
 const fetch = require('node-fetch');
 import * as cheerio from 'cheerio';
-import { writeFileSync } from 'fs';
 
 export abstract class SearchEngineBase implements ISearchEngine {
     abstract search(searchTerm: string): Promise<ISearchResult[]>;
@@ -25,14 +24,13 @@ export abstract class SearchEngineBase implements ISearchEngine {
         const $ = cheerio.load(res, {
             xmlMode: true
         });
-
         return $;
     }
 
     protected collectText($: any, selector: string) {
         let result: any[] = [];
 
-        $(selector).each(function (index: number, value: any) {
+        $(selector).each(function (_: number, value: any) {
             if ($(value).text()) {
                 result.push($(value).text().trim());
             }
@@ -41,11 +39,11 @@ export abstract class SearchEngineBase implements ISearchEngine {
         return result;
     }
 
-    protected collectLinks($: any, selector: string, baseUrl?: string) {
+    protected collectLinks($: any, selector: string, attr: string, baseUrl?: string) {
         let result: any[] = [];
 
-        $(selector).each(function (index: number, value: any) {
-            baseUrl ? result.push(baseUrl + $(value).attr('href').trim()) : result.push($(value).attr('href').trim());
+        $(selector).each(function (_: number, value: any) {
+            baseUrl ? result.push(baseUrl + $(value).attr(attr).trim()) : result.push($(value).attr(attr).trim());
         });
 
         return result;

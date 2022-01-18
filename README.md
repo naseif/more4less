@@ -14,6 +14,7 @@ Just wanted to practice web scraping :)
 - Saturn
 - Proshop.de
 - Otto.de
+- Alternate
 
 
 ## Installation

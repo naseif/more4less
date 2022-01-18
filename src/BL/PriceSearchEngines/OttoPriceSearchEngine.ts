@@ -2,6 +2,12 @@ import { SearchEngineBase, SearchResult } from '..';
 import { ISearchResult } from '../../Interfaces';
 
 export class OttoPriceSearchEngine extends SearchEngineBase {
+    /**
+     * Scrapes otto.de for products based on your search query
+     * @param searchTerm
+     * @returns
+     */
+
     async search(searchTerm: string): Promise<ISearchResult[]> {
         const baseUrl = 'https://www.otto.de';
 
@@ -13,7 +19,7 @@ export class OttoPriceSearchEngine extends SearchEngineBase {
         let links: any[] = [];
         let thumbnails: any[] = [];
 
-        $('.find_tile__priceWrapper').each((index: number, value: any) => {
+        $('.find_tile__priceWrapper').each((_: number, value: any) => {
             if ($(value).find('.find_tile__priceReduced').length > 0) {
                 prices.push($(value).find('.find_tile__priceReduced').text().trim());
             } else {
@@ -21,13 +27,13 @@ export class OttoPriceSearchEngine extends SearchEngineBase {
             }
         });
 
-        $('.find_tile__productImageLink').each((index: number, value: any) => {
+        $('.find_tile__productImageLink').each((_: number, value: any) => {
             links.push(baseUrl + $(value).attr('href'));
         });
 
         $('.find_tile__productImageCarousel')
             .find('img')
-            .each((index: number, value: any) => {
+            .each((_: number, value: any) => {
                 thumbnails.push($(value).attr('src'));
             });
 

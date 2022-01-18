@@ -11,3 +11,4 @@ export * from './PriceSearchEngines/SearchEngineList';
 export * from './PriceSearchEngines/SearchEngineBase';
 export * from './PriceSearchEngines/OttoPriceSearchEngine';
 export * from './PriceSearchEngines/ProshopPriceSearchEngine';
+export * from './PriceSearchEngines/AlternatePriceSearchEngine';

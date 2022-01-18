@@ -21,7 +21,7 @@ export class MediaMarktPriceSearchEngine extends SearchEngineBase {
         let ratings: any[] = [];
         let thumbnails: any[] = [];
 
-        $('.ScreenreaderTextSpan-sc-11hj9ix-0').each((index, value) => {
+        $('.ScreenreaderTextSpan-sc-11hj9ix-0').each((_, value) => {
             if (!$(value).text().startsWith('UVP')) {
                 prices.push(Number($(value).text().trim()));
             }
