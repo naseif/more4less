@@ -21,6 +21,12 @@ export class SaturnPriceSearchEngine extends SearchEngineBase {
         let ratings: any[] = [];
         let thumbnails: any[] = [];
 
+        $('.ScreenreaderTextSpan-sc-11hj9ix-0').each((index, value) => {
+            if (!$(value).text().startsWith('UVP')) {
+                prices.push(Number($(value).text().trim()));
+            }
+        });
+
         for (let i = 0; i < resultDivs.length; i++) {
             const thisResult = resultDivs[i];
             const htmlOfThisDiv = $.html(thisResult);
@@ -29,10 +35,11 @@ export class SaturnPriceSearchEngine extends SearchEngineBase {
             });
             titles.push($detail('h2[data-test=product-title]').text());
             ratings.push($detail('div[data-test=mms-customer-rating]').text());
-            prices.push($detail('div[data-test=mms-unbranded-price]').text());
             links.push(baseUrl + $detail('a[data-test=mms-router-link]').attr('href'));
             thumbnails.push($detail('div[data-test=product-image]').text());
         }
+
+        const ratingsFiltered = ratings.map((rating: string) => Number(rating.replace('(', '').replace(')', '')));
 
         let result: ISearchResult[] = [];
 
@@ -42,7 +49,7 @@ export class SaturnPriceSearchEngine extends SearchEngineBase {
                     this.constructor.name,
                     links[index],
                     title,
-                    ratings[index],
+                    ratingsFiltered[index],
                     prices[index],
                     thumbnails[index]
                 )
