@@ -52,6 +52,8 @@ export class EbayPriceSearchEngine extends SearchEngineBase {
 
             thumbnails.push($detail('.s-item__image-img').attr('src'));
         }
+        const pricesFilterd = prices.map((price: string) => Number(price.split('EUR')[1].trim().replace(',', '.')));
+
         let result: ISearchResult[] = [];
 
         titles.forEach((title: string, index: number) => {
@@ -60,8 +62,8 @@ export class EbayPriceSearchEngine extends SearchEngineBase {
                     this.constructor.name,
                     links[index],
                     title,
-                    ratings[index],
-                    prices[index],
+                    this.grabFirstPartAsNumber(ratings[index]),
+                    pricesFilterd[index],
                     thumbnails[index]
                 )
             );
