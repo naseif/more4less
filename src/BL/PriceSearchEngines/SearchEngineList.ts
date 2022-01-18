@@ -1,7 +1,6 @@
 import { ISearchEngine, ISearchResult } from '../../Interfaces/index';
 
 export class SearchEngineList implements ISearchEngine {
-
     /**
      * array of all search engines
      */
@@ -9,7 +8,7 @@ export class SearchEngineList implements ISearchEngine {
 
     /**
      * array of the search engines you wish to iterate through
-     * @param {ISearchEngine[]} searchEngines 
+     * @param {ISearchEngine[]} searchEngines
      */
 
     constructor(searchEngines: ISearchEngine[]) {
@@ -19,7 +18,7 @@ export class SearchEngineList implements ISearchEngine {
     /**
      * searches for the product through the search engines you defined
      * @param {string} searchTerm query of the product name
-     * @returns 
+     * @returns
      */
 
     async search(searchTerm: string): Promise<ISearchResult[]> {

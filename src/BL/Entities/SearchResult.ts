@@ -1,8 +1,6 @@
 import { ISearchResult } from '../../Interfaces/ISearchResult';
 
 export class SearchResult implements ISearchResult {
-
-
     /**
      * the engine the search was made on
      */
@@ -35,13 +33,13 @@ export class SearchResult implements ISearchResult {
     thumbnail: string;
 
     /**
-     * 
+     *
      * @param {string} engine
-     * @param {string} link 
-     * @param {string} name 
-     * @param {number} rating 
-     * @param {number} price 
-     * @param {string} thumbanil 
+     * @param {string} link
+     * @param {string} name
+     * @param {number} rating
+     * @param {number} price
+     * @param {string} thumbanil
      */
 
     constructor(engine: string, link: string, name: string, rating: number, price: number, thumbanil: string) {

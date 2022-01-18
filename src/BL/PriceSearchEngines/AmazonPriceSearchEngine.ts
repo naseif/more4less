@@ -3,10 +3,9 @@ import { ISearchResult } from '../../Interfaces/index';
 import { SearchEngineBase } from './SearchEngineBase';
 
 export class AmazonPriceSearchEngine extends SearchEngineBase {
-
     /**
      * Scrapes amazon for products based on your search query
-     * @param {string} searchTerm 
+     * @param {string} searchTerm
      * @returns {ISearchResult[]}
      */
 

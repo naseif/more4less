@@ -4,10 +4,9 @@ import { SearchEngineBase } from './SearchEngineBase';
 const cheerio = require('cheerio');
 
 export class EbayPriceSearchEngine extends SearchEngineBase {
-
     /**
      * Scrapes eBay for products based on your search query
-     * @param {string} searchTerm 
+     * @param {string} searchTerm
      * @returns {ISearchResult[]}
      */
 

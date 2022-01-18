@@ -4,10 +4,9 @@ import { ISearchResult } from '../../Interfaces/index';
 const cheerio = require('cheerio');
 
 export class AmazonPriceSearchEngine2 extends SearchEngineBase {
-
     /**
      * Scrapes amazon for products based on your search query
-     * @param {string} searchTerm 
+     * @param {string} searchTerm
      * @returns {ISearchResult[]}
      */
 

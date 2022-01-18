@@ -4,10 +4,9 @@ import { SearchEngineBase } from './SearchEngineBase';
 const cheerio = require('cheerio');
 
 export class MediaMarktPriceSearchEngine extends SearchEngineBase {
-
     /**
      * Scrapes MediaMarkt for products based on your search query
-     * @param {string} searchTerm 
+     * @param {string} searchTerm
      * @returns {ISearchResult[]}
      */
 

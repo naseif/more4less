@@ -6,7 +6,7 @@ export abstract class SearchEngineBase implements ISearchEngine {
     abstract search(searchTerm: string): Promise<ISearchResult[]>;
 
     /**
-     * 
+     *
      * @param {string} baseUrl baseUrl of the site to fetch
      * @param {string} searchQuery string of the product you wish to search for
      * @returns {Promise<cheerio.CheerioAPI>}
@@ -53,5 +53,9 @@ export abstract class SearchEngineBase implements ISearchEngine {
 
     protected grabFirstPartAsNumber(value: string): any {
         if (value) return Number(value.split(/\s/)[0].replace(',', '.'));
+    }
+
+    protected onlyUnique(value: any, index: any, self: string | any[]) {
+        return self.indexOf(value) === index;
     }
 }
