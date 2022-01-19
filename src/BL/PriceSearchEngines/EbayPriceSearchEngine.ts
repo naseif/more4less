@@ -15,13 +15,12 @@ export class EbayPriceSearchEngine extends SearchEngineBase {
         const $ = await this.requestWebsite(baseUrl + '/sch/i.html?_from=R40&_nkw=', searchTerm);
 
         const divs = $('.s-item__info'); // an object containing info of each product
-        const imageSection = $('.s-item__image-section');
 
         let titles: any[] = [];
         let links: any[] = [];
         let prices: any[] = [];
         let ratings: any[] = [];
-        let thumbnails: any[] = [];
+        let thumbnails: any[] = this.collectOnAttributeAndElement($, '.s-item__image-wrapper', 'img', 'src');
 
         $('.s-item__link').each(function (index, value) {
             links.push(value.attribs.href);
@@ -41,16 +40,6 @@ export class EbayPriceSearchEngine extends SearchEngineBase {
                 ratings.push($detail('.x-star-rating').text().trim());
                 prices.push($detail('.s-item__price').text().trim());
             }
-        }
-
-        for (let i = 0; i < imageSection.length; i++) {
-            const thisResult = imageSection[i];
-            const htmlOfThisDiv = $.html(thisResult);
-            const $detail = cheerio.load(htmlOfThisDiv, {
-                xmlMode: true
-            });
-
-            thumbnails.push($detail('.s-item__image-img').attr('src'));
         }
 
         const pricesFilterd = this.splitAndReplaceValue(prices, 'EUR', 1, ',', '.');

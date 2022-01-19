@@ -1,7 +1,6 @@
 import { ISearchEngine, ISearchResult } from '../../Interfaces';
 const fetch = require('node-fetch');
 import * as cheerio from 'cheerio';
-import { writeFileSync } from 'fs';
 
 export abstract class SearchEngineBase implements ISearchEngine {
     abstract search(searchTerm: string): Promise<ISearchResult[]>;
@@ -35,7 +34,6 @@ export abstract class SearchEngineBase implements ISearchEngine {
         const $ = cheerio.load(res, {
             xmlMode: true
         });
-        // writeFileSync("test.html", res, "utf8");
         return $;
     }
 
@@ -156,13 +154,23 @@ export abstract class SearchEngineBase implements ISearchEngine {
         return result;
     }
 
+    protected collectOnAttributeAndElementWithCallback(
+        $: cheerio.CheerioAPI,
+        selector: string,
+        elementOrSelector: string,
+        callback: (_: number, value: any) => void,
+        baseUrl?: string
+    ) {
+        $(selector).find(elementOrSelector).each(callback);
+    }
+
     protected splitAndReplaceValue(
         array: string[],
         splitter: string,
         splitIndex: number,
         valueToReplace: string,
         replacement: string
-    ) {
+    ): number[] {
         return array.map((value: string) =>
             Number(value.split(splitter)[splitIndex].trim().replace(valueToReplace, replacement))
         );
