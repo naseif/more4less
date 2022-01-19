@@ -22,7 +22,7 @@ export class KauflandPriceSearchEngine extends SearchEngineBase {
         this.spliceArray(thumbnails, 0, 2);
         this.spliceArray(thumbnails, thumbnails.length - 2, 2);
 
-        const pricesFilterd = prices.map((price: string) => Number(price.split('€')[0].trim().replace(',', '.')));
+        const pricesFilterd = this.splitAndReplaceValue(prices, '€', 0, ',', '.');
         const converRatingsToNumber = ratings.map((rating: string) => Number(rating));
 
         let result: ISearchResult[] = [];

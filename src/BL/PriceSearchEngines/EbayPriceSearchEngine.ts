@@ -52,7 +52,8 @@ export class EbayPriceSearchEngine extends SearchEngineBase {
 
             thumbnails.push($detail('.s-item__image-img').attr('src'));
         }
-        const pricesFilterd = prices.map((price: string) => Number(price.split('EUR')[1].trim().replace(',', '.')));
+
+        const pricesFilterd = this.splitAndReplaceValue(prices, 'EUR', 1, ',', '.');
 
         let result: ISearchResult[] = [];
 

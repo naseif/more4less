@@ -1,6 +1,7 @@
 import { ISearchEngine, ISearchResult } from '../../Interfaces';
 const fetch = require('node-fetch');
 import * as cheerio from 'cheerio';
+import { writeFileSync } from 'fs';
 
 export abstract class SearchEngineBase implements ISearchEngine {
     abstract search(searchTerm: string): Promise<ISearchResult[]>;
@@ -27,13 +28,14 @@ export abstract class SearchEngineBase implements ISearchEngine {
         const req = await fetch(`${baseUrl}${searchQueryEncoded}`, {
             headers: {
                 'User-Agent':
-                    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36 Edge/12.246'
+                    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36'
             }
         });
         const res = await req.text();
         const $ = cheerio.load(res, {
             xmlMode: true
         });
+        // writeFileSync("test.html", res, "utf8");
         return $;
     }
 
@@ -152,5 +154,17 @@ export abstract class SearchEngineBase implements ISearchEngine {
             });
 
         return result;
+    }
+
+    protected splitAndReplaceValue(
+        array: string[],
+        splitter: string,
+        splitIndex: number,
+        valueToReplace: string,
+        replacement: string
+    ) {
+        return array.map((value: string) =>
+            Number(value.split(splitter)[splitIndex].trim().replace(valueToReplace, replacement))
+        );
     }
 }

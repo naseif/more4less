@@ -38,7 +38,7 @@ export class OttoPriceSearchEngine extends SearchEngineBase {
             });
 
         const ratingsFiltered = ratings.map((rating: string) => Number(rating.replace('(', '').replace(')', '')));
-        const pricesFilterd = prices.map((price: string) => Number(price.split('€')[1].trim().replace(',', '.')));
+        const pricesFilterd = this.splitAndReplaceValue(prices, '€', 1, ',', '.');
 
         let result: ISearchResult[] = [];
 
