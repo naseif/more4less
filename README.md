@@ -15,6 +15,7 @@ Just wanted to practice web scraping :)
 - Proshop.de
 - Otto.de
 - Alternate
+- Kaufland
 
 
 ## Installation
