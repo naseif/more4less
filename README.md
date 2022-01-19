@@ -16,6 +16,7 @@ Just wanted to practice web scraping :)
 - Otto.de
 - Alternate
 - Kaufland
+- Clevertronic
 
 
 ## Installation

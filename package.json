@@ -1,6 +1,6 @@
 {
   "name": "more4less",
-  "version": "1.5.6",
+  "version": "1.5.7",
   "description": "A price search engine for various german online shops",
   "main": "dist/index.js",
   "scripts": {
