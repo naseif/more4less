@@ -4,8 +4,8 @@ import { ISearchResult } from '../../Interfaces';
 export class OttoPriceSearchEngine extends SearchEngineBase {
     /**
      * Scrapes otto.de for products based on your search query
-     * @param searchTerm
-     * @returns
+     * @param string searchTerm
+     * @returns ISearchResult[]
      */
 
     async search(searchTerm: string): Promise<ISearchResult[]> {

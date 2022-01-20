@@ -6,8 +6,8 @@ const cheerio = require('cheerio');
 export class SaturnPriceSearchEngine extends SearchEngineBase {
     /**
      * Scrapes Saturn for products based on your search query
-     * @param {string} searchTerm
-     * @returns {ISearchResult[]}
+     * @param string searchTerm
+     * @returns ISearchResult[]
      */
 
     async search(searchTerm: string): Promise<ISearchResult[]> {

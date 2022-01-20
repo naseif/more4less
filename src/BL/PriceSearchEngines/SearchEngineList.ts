@@ -1,17 +1,26 @@
 import { ISearchEngine, ISearchResult } from '../../Interfaces/index';
-import * as engines from "../index"
+import * as engines from '../index';
 
 /**
- *  Engine list to select from when initializing the Class instead 
+ *  Engine list to select from when initializing the Class instead
  */
 
-export type TSearchEngine = "Alternate" | "Amazon" | "Clevertronic" | "Ebay" | "Kaufland" | "MediaMarkt" | "Otto" | "Proshop" | "Saturn";
+export type TSearchEngine =
+    | 'Alternate'
+    | 'Amazon'
+    | 'Clevertronic'
+    | 'Ebay'
+    | 'Kaufland'
+    | 'MediaMarkt'
+    | 'Otto'
+    | 'Proshop'
+    | 'Saturn';
 
 export class SearchEngineList implements ISearchEngine {
     /**
      * array of all search engines
      */
-    searchEngines: TSearchEngine | ISearchEngine[]
+    searchEngines: TSearchEngine | ISearchEngine[];
 
     /**
      * array of the search engines you wish to iterate through
@@ -31,38 +40,37 @@ export class SearchEngineList implements ISearchEngine {
     async search(searchTerm: string): Promise<ISearchResult[]> {
         let result: ISearchResult[] = [];
 
-        if (typeof this.searchEngines === "string") {
+        if (typeof this.searchEngines === 'string') {
             switch (this.searchEngines) {
-                case "Alternate":
-                    result = await new engines.AlternatePriceSearchEngine().search(searchTerm)
+                case 'Alternate':
+                    result = await new engines.AlternatePriceSearchEngine().search(searchTerm);
                     break;
-                case "Amazon":
-                    result = await new engines.AmazonPriceSearchEngine2().search(searchTerm)
+                case 'Amazon':
+                    result = await new engines.AmazonPriceSearchEngine2().search(searchTerm);
                     break;
-                case "Clevertronic":
-                    result = await new engines.ClevertronicPriceSearchEngine().search(searchTerm)
+                case 'Clevertronic':
+                    result = await new engines.ClevertronicPriceSearchEngine().search(searchTerm);
                     break;
-                case "Ebay":
-                    result = await new engines.EbayPriceSearchEngine().search(searchTerm)
+                case 'Ebay':
+                    result = await new engines.EbayPriceSearchEngine().search(searchTerm);
                     break;
-                case "Kaufland":
-                    result = await new engines.KauflandPriceSearchEngine().search(searchTerm)
+                case 'Kaufland':
+                    result = await new engines.KauflandPriceSearchEngine().search(searchTerm);
                     break;
-                case "MediaMarkt":
-                    result = await new engines.MediaMarktPriceSearchEngine().search(searchTerm)
+                case 'MediaMarkt':
+                    result = await new engines.MediaMarktPriceSearchEngine().search(searchTerm);
                     break;
-                case "Otto":
-                    result = await new engines.OttoPriceSearchEngine().search(searchTerm)
-                    break;
-
-                case "Proshop":
-                    result = await new engines.ProshopPriceSearchEngine().search(searchTerm)
+                case 'Otto':
+                    result = await new engines.OttoPriceSearchEngine().search(searchTerm);
                     break;
 
-                case "Saturn":
-                    result = await new engines.SaturnPriceSearchEngine().search(searchTerm)
+                case 'Proshop':
+                    result = await new engines.ProshopPriceSearchEngine().search(searchTerm);
                     break;
 
+                case 'Saturn':
+                    result = await new engines.SaturnPriceSearchEngine().search(searchTerm);
+                    break;
             }
         } else {
             for (const engine of this.searchEngines) {

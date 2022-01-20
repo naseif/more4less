@@ -3,6 +3,11 @@ import { SearchEngineBase, SearchResult } from '..';
 import { ISearchResult } from '../../Interfaces';
 
 export class KauflandPriceSearchEngine extends SearchEngineBase {
+    /**
+     * Scrapes Kaufland for products based on your search query
+     * @param string searchTerm
+     * @returns ISearchResult[]
+     */
     async search(searchTerm: string): Promise<ISearchResult[]> {
         const baseUrl = 'https://www.kaufland.de';
         const $ = await this.requestWebsite(baseUrl + '/item/search/?search_value=', searchTerm);

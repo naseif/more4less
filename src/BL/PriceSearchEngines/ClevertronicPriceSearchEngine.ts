@@ -2,7 +2,13 @@ import { SearchEngineBase, SearchResult } from '..';
 import { ISearchResult } from '../../Interfaces';
 
 export class ClevertronicPriceSearchEngine extends SearchEngineBase {
-    async search(searchTerm: string): Promise<any> {
+    /**
+     * Scrapes clevertronic for products based on your search query
+     * @param string searchTerm
+     * @returns ISearchResult[]
+     */
+
+    async search(searchTerm: string): Promise<ISearchResult[]> {
         const baseUrl = 'https://www.clevertronic.de';
         const $ = await this.requestWebsite(baseUrl + '/products?s=', searchTerm);
 
