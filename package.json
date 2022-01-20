@@ -1,41 +1,41 @@
 {
-  "name": "more4less",
-  "version": "1.6.3",
-  "description": "A price search engine for various german online shops",
-  "main": "dist/index.js",
-  "scripts": {
-    "start": "node dist/index.js",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/naseif/more4less.git"
-  },
-  "author": "naseif",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/naseif/more4less/issues"
-  },
-  "keywords": [
-    "amazon-price-scraper",
-    "ebay-price-scraper",
-    "price-search-engine",
-    "price-scraper",
-    "ebay-price",
-    "amazon-price",
-    "search-price"
-  ],
-  "homepage": "https://github.com/naseif/more4less#readme",
-  "devDependencies": {
-    "@types/node": "^17.0.8",
-    "prettier": "^2.5.1",
-    "tslint": "^6.1.3",
-    "typedoc": "^0.22.11",
-    "typescript": "^4.5.4"
-  },
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.10",
-    "csv-writer": "^1.6.0",
-    "node-fetch": "^2.6.6"
-  }
+    "name": "more4less",
+    "version": "1.6.4",
+    "description": "A price search engine for various german online shops",
+    "main": "dist/index.js",
+    "scripts": {
+        "start": "node dist/index.js",
+        "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/naseif/more4less.git"
+    },
+    "author": "naseif",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/naseif/more4less/issues"
+    },
+    "keywords": [
+        "amazon-price-scraper",
+        "ebay-price-scraper",
+        "price-search-engine",
+        "price-scraper",
+        "ebay-price",
+        "amazon-price",
+        "search-price"
+    ],
+    "homepage": "https://github.com/naseif/more4less#readme",
+    "devDependencies": {
+        "@types/node": "^17.0.8",
+        "prettier": "^2.5.1",
+        "tslint": "^6.1.3",
+        "typedoc": "^0.22.11",
+        "typescript": "^4.5.4"
+    },
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.10",
+        "csv-writer": "^1.6.0",
+        "node-fetch": "^2.6.6"
+    }
 }
