@@ -34,12 +34,12 @@ export class SearchResult implements ISearchResult {
 
     /**
      *
-     * @param {string} engine
-     * @param {string} link
-     * @param {string} name
-     * @param {number} rating
-     * @param {number} price
-     * @param {string} thumbanil
+     * @param string the engine the search was made on
+     * @param string link to the searched product
+     * @param string name of the product
+     * @param number the rating of the product
+     * @param number price of the product
+     * @param string thumbnail of the product
      */
 
     constructor(engine: string, link: string, name: string, rating: number, price: number, thumbanil: string) {
