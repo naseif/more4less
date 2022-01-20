@@ -58,6 +58,19 @@ const ebay = new more4less.EbayPriceSearchEngine();
     const getProduct = await ebay.search("alexa firestick");
     console.log(getProduct);
 })();
+
+
+// or
+
+import {SearchEngine} from "more4less";
+
+const engine = new SearchEngine("Amazon");
+
+(async () => {
+    const getProduct = await engine.search("alexa firestick");
+    console.log(getProduct);
+})();
+
 ```
 
 ### Search on all supported shops
@@ -65,10 +78,10 @@ const ebay = new more4less.EbayPriceSearchEngine();
 ```ts
 import * as more4less from "more4less";
 
-const searchEngines = new more4less.SearchEngineList([new more4less.EbayPriceSearchEngine(), new more4less.MediaMarktPriceSearchEngine(), new more4less.SaturnPriceSearchEngine(), new more4less.AmazonPriceSearchEngine2()]);
+const engine =  new SearchEngine("All");
 
 (async () => {
-    const getProduct = await searchEngines.search("alexa firestick");
+    const getProduct = await engine.search("alexa firestick");
     console.log(getProduct);
 })();
 ```
