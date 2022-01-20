@@ -10,7 +10,7 @@ export class ProshopPriceSearchEngine extends SearchEngineBase {
 
     async search(searchTerm: string): Promise<ISearchResult[]> {
         const baseUrl = 'https://www.proshop.de';
-        const $ = await this.requestWebsite(baseUrl + '/?s=', searchTerm);
+        const $ = await this.requestWebsite(`${baseUrl}/?s=${encodeURIComponent(searchTerm)}`);
 
         let titles: any[] = this.collectText($, 'h2[product-display-name=""]');
         let prices: any[] = this.collectText($, '.site-currency-lg');

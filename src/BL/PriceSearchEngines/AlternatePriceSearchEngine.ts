@@ -10,7 +10,7 @@ export class AlternatePriceSearchEngine extends SearchEngineBase {
 
     async search(searchTerm: string): Promise<ISearchResult[]> {
         const baseUrl = 'https://www.alternate.de';
-        const $ = await this.requestWebsite(baseUrl + '/listing.xhtml?q=', searchTerm);
+        const $ = await this.requestWebsite(`${baseUrl}/listing.xhtml?q=${encodeURIComponent(searchTerm)}`);
 
         let titles: any[] = this.collectLinks($, '.productPicture', 'alt');
         let links: any[] = this.collectLinks($, '.productBox', 'href');

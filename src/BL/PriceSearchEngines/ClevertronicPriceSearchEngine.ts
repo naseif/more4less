@@ -10,7 +10,7 @@ export class ClevertronicPriceSearchEngine extends SearchEngineBase {
 
     async search(searchTerm: string): Promise<ISearchResult[]> {
         const baseUrl = 'https://www.clevertronic.de';
-        const $ = await this.requestWebsite(baseUrl + '/products?s=', searchTerm);
+        const $ = await this.requestWebsite(`${baseUrl}/products?s=${encodeURIComponent(searchTerm)}`);
 
         let titles: any[] = this.collectText($, '.product_box_name');
         let ratings: any[] = [];

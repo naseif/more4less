@@ -12,7 +12,8 @@ export class EbayPriceSearchEngine extends SearchEngineBase {
 
     async search(searchTerm: string): Promise<ISearchResult[]> {
         const baseUrl = 'https://www.ebay.de';
-        const $ = await this.requestWebsite(baseUrl + '/sch/i.html?_from=R40&_nkw=', searchTerm);
+        `${baseUrl}/sch/i.html?_from=R40&_nkw=${searchTerm}`;
+        const $ = await this.requestWebsite(`${baseUrl}/sch/i.html?_from=R40&_nkw=${encodeURIComponent(searchTerm)}`);
 
         const divs = $('.s-item__info'); // an object containing info of each product
 

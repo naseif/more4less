@@ -14,6 +14,7 @@ export type TSearchEngine =
     | 'MediaMarkt'
     | 'Otto'
     | 'Proshop'
+    | 'Bücher.de'
     | 'Saturn';
 
 export class SearchEngineList implements ISearchEngine {
@@ -70,6 +71,9 @@ export class SearchEngineList implements ISearchEngine {
 
                 case 'Saturn':
                     result = await new engines.SaturnPriceSearchEngine().search(searchTerm);
+                    break;
+                case 'Bücher.de':
+                    result = await new engines.BuecherPriceSearchEngine().search(searchTerm);
                     break;
             }
         } else {

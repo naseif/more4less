@@ -10,7 +10,7 @@ export class KauflandPriceSearchEngine extends SearchEngineBase {
      */
     async search(searchTerm: string): Promise<ISearchResult[]> {
         const baseUrl = 'https://www.kaufland.de';
-        const $ = await this.requestWebsite(baseUrl + '/item/search/?search_value=', searchTerm);
+        const $ = await this.requestWebsite(`${baseUrl}/item/search/?search_value=${encodeURIComponent(searchTerm)}`);
 
         let titles: any[] = this.collectText($, '.product__title');
         let prices: any[] = this.collectText($, '.price');

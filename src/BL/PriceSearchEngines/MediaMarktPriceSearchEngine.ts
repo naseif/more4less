@@ -12,7 +12,7 @@ export class MediaMarktPriceSearchEngine extends SearchEngineBase {
 
     async search(searchTerm: string): Promise<ISearchResult[]> {
         const baseUrl = 'https://www.mediamarkt.de';
-        const $ = await this.requestWebsite(baseUrl + '/de/search.html?query=', searchTerm);
+        const $ = await this.requestWebsite(`${baseUrl}/de/search.html?query=${encodeURIComponent(searchTerm)}`);
         const resultDivs = $('div[data-test=mms-search-srp-productlist-item]');
 
         let titles: any[] = [];

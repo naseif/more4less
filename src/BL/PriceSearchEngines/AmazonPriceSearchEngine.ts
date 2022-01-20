@@ -11,7 +11,7 @@ export class AmazonPriceSearchEngine extends SearchEngineBase {
 
     async search(searchTerm: string): Promise<ISearchResult[]> {
         const baseUrl = 'https://www.amazon.de';
-        const $ = await this.requestWebsite(`${baseUrl}/s?k=`, searchTerm);
+        const $ = await this.requestWebsite(`${baseUrl}/s?k=${encodeURIComponent(searchTerm)}`);
 
         let titles: string[] = this.collectText($, '.s-title-instructions-style');
         let prices: string[] = this.collectText($, '.a-price-whole');

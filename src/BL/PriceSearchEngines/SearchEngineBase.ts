@@ -3,6 +3,49 @@ const fetch = require('node-fetch');
 import * as cheerio from 'cheerio';
 import http from 'node:http';
 import https from 'node:https';
+import { Stream } from 'node:stream';
+
+export type HTTPMethods = 'get' | 'post' | 'put' | 'delete' | 'patch';
+
+export interface IFetchOptions {
+    /**
+     * http(s).Agent instance or function that returns an instance
+     */
+    agent?: (_parsedURL: any) => void;
+
+    /** 
+     * request headers. format is the identical to that accepted by the Headers constructor
+     */
+    headers?: { 'User-Agent': string };
+
+    /**
+     * The HTTP Method of the request
+     */
+
+    method?: HTTPMethods;
+
+    /**
+     * set to `manual` to extract redirect headers, `error` to reject redirect. Default "follow"
+     */
+
+    redirect?: string;
+
+    /**
+     * maximum response body size in bytes. 0 to disable
+     */
+    size?: number;
+
+    /**
+     * support gzip/deflate content encoding. false to disable
+     */
+    compress?: boolean;
+
+    /**
+     * request body. can be null, a string, a Buffer, a Blob, or a Node.js Readable stream
+     */
+
+    body?: null | string | Buffer | Blob | Stream;
+}
 
 export abstract class SearchEngineBase implements ISearchEngine {
     abstract search(searchTerm: string): Promise<ISearchResult[]>;
@@ -24,17 +67,17 @@ export abstract class SearchEngineBase implements ISearchEngine {
      * ```
      */
 
-    protected async requestWebsite(baseUrl: string, searchQuery: string): Promise<cheerio.CheerioAPI> {
+    protected async requestWebsite(baseUrl: string, fetchOptions?: IFetchOptions): Promise<cheerio.CheerioAPI> {
         const httpAgent = new http.Agent({
             keepAlive: true,
-            maxSockets: 1
+            maxSockets: 20
         });
         const httpsAgent = new https.Agent({
             keepAlive: true,
-            maxSockets: 1
+            maxSockets: 20
         });
 
-        const options = {
+        const DefaultOptions = {
             agent: (_parsedURL: any) => {
                 if (_parsedURL.protocol == 'http:') {
                     return httpAgent;
@@ -48,8 +91,7 @@ export abstract class SearchEngineBase implements ISearchEngine {
             }
         };
 
-        const searchQueryEncoded = encodeURIComponent(searchQuery);
-        const req = await fetch(`${baseUrl}${searchQueryEncoded}`, options);
+        const req = await fetch(`${baseUrl}`, fetchOptions ? fetchOptions : DefaultOptions);
         const res = await req.text();
         const $ = cheerio.load(res, {
             xmlMode: true

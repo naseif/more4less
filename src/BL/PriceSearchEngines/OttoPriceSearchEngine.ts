@@ -10,8 +10,7 @@ export class OttoPriceSearchEngine extends SearchEngineBase {
 
     async search(searchTerm: string): Promise<ISearchResult[]> {
         const baseUrl = 'https://www.otto.de';
-
-        const $ = await this.requestWebsite(baseUrl + '/suche/', searchTerm);
+        const $ = await this.requestWebsite(`${baseUrl}/suche/${searchTerm}`);
 
         let titles: any[] = this.collectText($, '.find_tile__name');
         let prices: any[] = [];
