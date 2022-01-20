@@ -9,7 +9,6 @@ export class BuecherPriceSearchEngine extends SearchEngineBase {
      */
 
     async search(searchTerm: string): Promise<ISearchResult[]> {
-
         const postUrl = 'https://www.buecher.de/ni/search_search/quick_search/receiver_object/shop_search_quicksearch/';
 
         const params = new URLSearchParams();

@@ -13,7 +13,7 @@ export interface IFetchOptions {
      */
     agent?: (_parsedURL: any) => void;
 
-    /** 
+    /**
      * request headers. format is the identical to that accepted by the Headers constructor
      */
     headers?: { 'User-Agent': string };

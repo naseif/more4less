@@ -14,4 +14,5 @@ export * from './PriceSearchEngines/ProshopPriceSearchEngine';
 export * from './PriceSearchEngines/AlternatePriceSearchEngine';
 export * from './PriceSearchEngines/KauflandPriceSearchEngine';
 export * from './PriceSearchEngines/ClevertronicPriceSearchEngine';
-export * from "./PriceSearchEngines/BuecherPriceSearchEngine";
+export * from './PriceSearchEngines/BuecherPriceSearchEngine';
+export * from './PriceSearchEngines/SearchEngine';
