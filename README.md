@@ -8,17 +8,18 @@ Just wanted to practice web scraping :)
 
 ## Supported online shops:
 
-- eBay
-- Amazon
-- MediaMarkt
-- Saturn
-- Proshop.de
-- Otto.de
-- Alternate
-- Kaufland
-- Clevertronic
-- Bücher.de
-
+-   eBay
+-   Amazon
+-   MediaMarkt
+-   MediMax
+-   Saturn
+-   Cyberport
+-   Proshop.de
+-   Otto.de
+-   Alternate
+-   Kaufland
+-   Clevertronic
+-   Bücher.de
 
 ## Installation
 
@@ -28,7 +29,6 @@ npm i more4less
 
 ## Importing
 
-
 ### TypeScript
 
 ```ts
@@ -36,7 +36,6 @@ import * as more4less from "more4less";
 
 import { AmazonPriceSearchEngine, EbayPriceSearchEngine } from 'more4less'; // Individual classes
 ```
-
 
 ### JavaScript
 

@@ -16,3 +16,5 @@ export * from './PriceSearchEngines/KauflandPriceSearchEngine';
 export * from './PriceSearchEngines/ClevertronicPriceSearchEngine';
 export * from './PriceSearchEngines/BuecherPriceSearchEngine';
 export * from './PriceSearchEngines/SearchEngine';
+export * from './PriceSearchEngines/CyberportPriceSearchEngine';
+export * from './PriceSearchEngines/MediMaxPriceSearchEngine';

@@ -5,15 +5,17 @@ import * as engines from '../index';
 export type TSearchEngine =
     | 'Alternate'
     | 'Amazon'
+    | 'Bücher.de'
     | 'Clevertronic'
+    | 'Cyberport'
     | 'Ebay'
     | 'Kaufland'
     | 'MediaMarkt'
+    | 'MediMax'
     | 'Otto'
     | 'Proshop'
-    | 'Bücher.de'
-    | 'All'
-    | 'Saturn';
+    | 'Saturn'
+    | 'All';
 
 export class SearchEngine implements ISearchEngine {
     /**
@@ -50,6 +52,9 @@ export class SearchEngine implements ISearchEngine {
             case 'Clevertronic':
                 result = await new engines.ClevertronicPriceSearchEngine().search(searchTerm);
                 break;
+            case 'Cyberport':
+                result = await new engines.CyberportPriceSearchEngine().search(searchTerm);
+                break;
             case 'Ebay':
                 result = await new engines.EbayPriceSearchEngine().search(searchTerm);
                 break;
@@ -59,14 +64,15 @@ export class SearchEngine implements ISearchEngine {
             case 'MediaMarkt':
                 result = await new engines.MediaMarktPriceSearchEngine().search(searchTerm);
                 break;
+            case 'MediMax':
+                result = await new engines.MediMaxPriceSearchEngine().search(searchTerm);
+                break;
             case 'Otto':
                 result = await new engines.OttoPriceSearchEngine().search(searchTerm);
                 break;
-
             case 'Proshop':
                 result = await new engines.ProshopPriceSearchEngine().search(searchTerm);
                 break;
-
             case 'Saturn':
                 result = await new engines.SaturnPriceSearchEngine().search(searchTerm);
                 break;
@@ -84,7 +90,9 @@ export class SearchEngine implements ISearchEngine {
                     new engines.OttoPriceSearchEngine().search(searchTerm),
                     new engines.ProshopPriceSearchEngine().search(searchTerm),
                     new engines.SaturnPriceSearchEngine().search(searchTerm),
-                    new engines.BuecherPriceSearchEngine().search(searchTerm)
+                    new engines.BuecherPriceSearchEngine().search(searchTerm),
+                    new engines.CyberportPriceSearchEngine().search(searchTerm),
+                    new engines.MediMaxPriceSearchEngine().search(searchTerm)
                 ]);
                 result = getAll.flat(1);
                 break;
