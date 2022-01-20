@@ -17,6 +17,7 @@ Just wanted to practice web scraping :)
 - Alternate
 - Kaufland
 - Clevertronic
+- Bücher.de
 
 
 ## Installation
