@@ -124,7 +124,7 @@ export abstract class SearchEngineBase implements ISearchEngine {
      * @param string selector HTML Selector
      * @param string attr HTML Attribute Name
      * @param string baseUrl baseUrl of the website in case you want to get the relative urls of all products
-     * @returns {string[] Array containing all matched results
+     * @returns string[] Array containing all matched results
      */
 
     protected collectLinks($: any, selector: string, attr: string, baseUrl?: string): string[] {
@@ -140,7 +140,7 @@ export abstract class SearchEngineBase implements ISearchEngine {
     /**
      * Splits a string from whitespace and replaces "," with ".". Used for some online shops.
      * @param string value
-     * @returns
+     * @returns string
      */
 
     protected grabFirstPartAsNumber(value: string): any {

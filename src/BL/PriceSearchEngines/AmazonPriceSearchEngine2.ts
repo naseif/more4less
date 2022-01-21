@@ -1,7 +1,6 @@
 import { SearchEngineBase } from './SearchEngineBase';
 import { SearchResult } from '..';
 import { ISearchResult } from '../../Interfaces/index';
-const cheerio = require('cheerio');
 
 export class AmazonPriceSearchEngine2 extends SearchEngineBase {
     /**
@@ -15,27 +14,28 @@ export class AmazonPriceSearchEngine2 extends SearchEngineBase {
         const $ = await this.requestWebsite(`${baseUrl}/s?k=${encodeURIComponent(searchTerm)}`);
 
         let titles: any[] = [];
-        let prices: any[] = [];
+        let prices: any[] = this.collectText($, '.a-price-whole');
         let links: any[] = [];
         let ratings: any[] = [];
-        let thumbnails: any[] = [];
+        let thumbnails: any[] = this.collectLinks($, '.s-image', 'src');
 
-        let searchResultDivs = $('.s-result-item');
-
-        for (let i = 0; i < searchResultDivs.length; i++) {
-            const thisDiv = searchResultDivs[i];
-            const htmlOfThisDiv = $.html(thisDiv);
-            const $detail = cheerio.load(htmlOfThisDiv, {
-                xmlMode: true
+        $('.s-title-instructions-style')
+            .find('h2 > a')
+            .each((_: number, value: any) => {
+                titles.push($(value).text().trim());
             });
-            if ($detail('.s-title-instructions-style').text() && $detail('.a-price-whole').text()) {
-                titles.push($detail('.s-title-instructions-style').text().trim());
-                prices.push($detail('.a-price-whole').text().trim());
-                links.push(baseUrl + $detail(".a-link-normal[title='product-image']").attr('href'));
-                ratings.push($detail('.a-icon-alt').text().trim());
-                thumbnails.push($detail('.s-image').attr('src'));
+
+        $('span[data-component-type="s-product-image"]')
+            .find('a')
+            .each((_, value) => {
+                links.push(baseUrl + $(value).attr('href'));
+            });
+
+        $('.a-icon-alt').each((_, value) => {
+            if ($(value).text() && !$(value).text().includes('mehr')) {
+                ratings.push($(value).text().trim());
             }
-        }
+        });
 
         let result: ISearchResult[] = [];
         titles.forEach((title, index) => {
