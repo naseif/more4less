@@ -12,6 +12,7 @@ export type TSearchEngine =
     | 'Kaufland'
     | 'MediaMarkt'
     | 'MediMax'
+    | 'Mindfactory'
     | 'Otto'
     | 'Proshop'
     | 'Saturn'
@@ -67,6 +68,9 @@ export class SearchEngine implements ISearchEngine {
             case 'MediMax':
                 result = await new engines.MediMaxPriceSearchEngine().search(searchTerm);
                 break;
+            case 'Mindfactory':
+                result = await new engines.MindfactoryPriceSearchEngine().search(searchTerm);
+                break;
             case 'Otto':
                 result = await new engines.OttoPriceSearchEngine().search(searchTerm);
                 break;
@@ -92,7 +96,8 @@ export class SearchEngine implements ISearchEngine {
                     new engines.SaturnPriceSearchEngine().search(searchTerm),
                     new engines.BuecherPriceSearchEngine().search(searchTerm),
                     new engines.CyberportPriceSearchEngine().search(searchTerm),
-                    new engines.MediMaxPriceSearchEngine().search(searchTerm)
+                    new engines.MediMaxPriceSearchEngine().search(searchTerm),
+                    new engines.MindfactoryPriceSearchEngine().search(searchTerm)
                 ]);
                 result = getAll.flat(1);
                 break;

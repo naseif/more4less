@@ -18,3 +18,4 @@ export * from './PriceSearchEngines/BuecherPriceSearchEngine';
 export * from './PriceSearchEngines/SearchEngine';
 export * from './PriceSearchEngines/CyberportPriceSearchEngine';
 export * from './PriceSearchEngines/MediMaxPriceSearchEngine';
+export * from './PriceSearchEngines/MindfactoryPriceSearchEngine';
