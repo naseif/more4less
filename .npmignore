@@ -4,3 +4,5 @@ node_modules
 tsconfig.json
 package-lock.json
 docs
+test.js
+dev.ps1

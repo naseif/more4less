@@ -17,8 +17,8 @@ export class SearchEngineList implements ISearchEngine {
 
     /**
      * searches for the product through the search engines you defined
-     * @param {string} searchTerm query of the product name
-     * @returns
+     * @param string searchTerm query of the product name
+     * @returns ISearchResult[]
      */
 
     async search(searchTerm: string): Promise<ISearchResult[]> {

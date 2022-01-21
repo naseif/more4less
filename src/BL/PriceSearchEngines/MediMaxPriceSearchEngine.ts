@@ -2,6 +2,11 @@ import { SearchEngineBase, SearchResult } from '..';
 import { ISearchResult } from '../../Interfaces';
 
 export class MediMaxPriceSearchEngine extends SearchEngineBase {
+    /**
+     * Scrapes MediMax for products based on your search query
+     * @param string searchTerm
+     * @returns ISearchResult[]
+     */
     async search(searchTerm: string): Promise<ISearchResult[]> {
         const baseUrl = 'https://www.medimax.de';
         const $ = await this.requestWebsite(`${baseUrl}/search/?text=${encodeURIComponent(searchTerm)}`);

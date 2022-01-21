@@ -2,6 +2,11 @@ import { SearchEngineBase, SearchResult } from '..';
 import { ISearchResult } from '../../Interfaces';
 
 export class CyberportPriceSearchEngine extends SearchEngineBase {
+    /**
+     * Scrapes Cyberport for products based on your search query
+     * @param string searchTerm
+     * @returns ISearchResult[]
+     */
     async search(searchTerm: string): Promise<ISearchResult[]> {
         const baseUrl = 'https://www.cyberport.de';
         const $ = await this.requestWebsite(`${baseUrl}/tools/search-results.html?q=${encodeURIComponent(searchTerm)}`);
