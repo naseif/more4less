@@ -2,6 +2,11 @@ import { SearchEngineBase, SearchResult } from '..';
 import { ISearchResult } from '../../Interfaces';
 
 export class MindfactoryPriceSearchEngine extends SearchEngineBase {
+    /**
+     * Scrapes Mindfactory for products based on your search query
+     * @param string searchTerm
+     * @returns
+     */
     async search(searchTerm: string): Promise<any> {
         const baseUrl = 'https://www.mindfactory.de';
         const $ = await this.requestWebsite(

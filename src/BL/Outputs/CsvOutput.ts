@@ -18,7 +18,7 @@ export class CsvOutput implements IOutput {
 
     /**
      * outputs the data into CSV File
-     * @param {ISearchResult[]} searchResults
+     * @param ISearchResult[] searchResults
      */
 
     outputData(searchResults: ISearchResult[]): void {

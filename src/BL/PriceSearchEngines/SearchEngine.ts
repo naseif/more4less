@@ -23,7 +23,7 @@ export class SearchEngine implements ISearchEngine {
      * The desired search engine to use
      */
 
-    protected searchEngine: TSearchEngine;
+    searchEngine: TSearchEngine;
 
     /**
      * The desired search engine to use

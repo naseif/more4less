@@ -5,8 +5,8 @@ import { ISearchResult } from '../../Interfaces/index';
 export class AmazonPriceSearchEngine2 extends SearchEngineBase {
     /**
      * Scrapes amazon for products based on your search query
-     * @param {string} searchTerm
-     * @returns {ISearchResult[]}
+     * @param string searchTerm
+     * @returns ISearchResult[]
      */
 
     async search(searchTerm: string): Promise<ISearchResult[]> {

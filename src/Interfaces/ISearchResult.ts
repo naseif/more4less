@@ -1,5 +1,5 @@
 /**
- * That is the thing that we want back
+ * The search result interface
  */
 export interface ISearchResult {
     engine: string;

@@ -9,7 +9,7 @@ export class JSONOutput implements IOutput {
 
     /**
      *
-     * @param {string} filePath
+     * @param string the path where you wish to save the file
      */
     constructor(filePath: string) {
         this.filePath = filePath;
@@ -20,6 +20,10 @@ export class JSONOutput implements IOutput {
      * @param {ISearchResult[]} searchResults
      */
     outputData(searchResults: ISearchResult[]): void {
-        writeFileSync(this.filePath, JSON.stringify(searchResults), 'utf8');
+        try {
+            writeFileSync(this.filePath, JSON.stringify(searchResults), 'utf8');
+        } catch (error) {
+            console.log(error);
+        }
     }
 }

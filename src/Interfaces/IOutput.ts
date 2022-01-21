@@ -1,7 +1,7 @@
 import { ISearchResult } from './ISearchResult';
 
 /**
- * We have different output formats
+ * the output can be in different formats.
  */
 export interface IOutput {
     outputData(searchResults: ISearchResult[]): void;
