@@ -4,7 +4,7 @@ A fast flexible **price search engine** for various german online shops!
 
 ## Motivation
 
-Just wanted to practice web scraping :)
+Curiosity 🤷‍♂️
 
 ## Supported online shops:
 
@@ -12,6 +12,7 @@ Just wanted to practice web scraping :)
 -   Amazon
 -   MediaMarkt
 -   MediMax
+-   Mindfactory
 -   Saturn
 -   Cyberport
 -   Proshop.de
