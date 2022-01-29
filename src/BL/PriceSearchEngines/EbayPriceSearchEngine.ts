@@ -17,11 +17,11 @@ export class EbayPriceSearchEngine extends SearchEngineBase {
 
         const divs = $('.s-item__info'); // an object containing info of each product
 
-        let titles: any[] = [];
-        let links: any[] = [];
-        let prices: any[] = [];
-        let ratings: any[] = [];
-        let thumbnails: any[] = this.collectOnAttributeAndElement($, '.s-item__image-wrapper', 'img', 'src');
+        let titles: string[] = [];
+        let links: string[] = [];
+        let prices: string[] = [];
+        let ratings: string[] = [];
+        let thumbnails: string[] = this.collectOnAttributeAndElement($, '.s-item__image-wrapper', 'img', 'src');
 
         $('.s-item__link').each(function (index, value) {
             links.push(value.attribs.href);

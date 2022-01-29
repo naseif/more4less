@@ -15,11 +15,11 @@ export class MediaMarktPriceSearchEngine extends SearchEngineBase {
         const $ = await this.requestWebsite(`${baseUrl}/de/search.html?query=${encodeURIComponent(searchTerm)}`);
         const resultDivs = $('div[data-test=mms-search-srp-productlist-item]');
 
-        let titles: any[] = [];
-        let links: any[] = [];
-        let prices: any[] = [];
-        let ratings: any[] = [];
-        let thumbnails: any[] = [];
+        let titles: string[] = [];
+        let links: string[] = [];
+        let prices: number[] = [];
+        let ratings: string[] = [];
+        let thumbnails: string[] = [];
 
         $('.ScreenreaderTextSpan-sc-11hj9ix-0').each((_, value) => {
             if (!$(value).text().startsWith('UVP')) {

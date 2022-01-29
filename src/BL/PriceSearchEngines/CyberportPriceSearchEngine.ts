@@ -12,11 +12,11 @@ export class CyberportPriceSearchEngine extends SearchEngineBase {
         const $ = await this.requestWebsite(`${baseUrl}/tools/search-results.html?q=${encodeURIComponent(searchTerm)}`);
 
         const result: ISearchResult[] = [];
-        const titles: any[] = this.collectText($, '.productTitleName');
-        const prices: any[] = this.collectText($, '.delivery-price');
+        const titles: string[] = this.collectText($, '.productTitleName');
+        const prices: string[] = this.collectText($, '.delivery-price');
         const ratings: any[] = this.collectText($, '.stars');
         const thumbnails: any[] = [];
-        const links: any[] = this.collectOnAttributeAndElement($, '.productImage', 'a', 'href', baseUrl);
+        const links: string[] = this.collectOnAttributeAndElement($, '.productImage', 'a', 'href', baseUrl);
 
         $('.productImage')
             .find('img')

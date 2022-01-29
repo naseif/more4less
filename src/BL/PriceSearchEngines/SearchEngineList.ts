@@ -25,7 +25,7 @@ export class SearchEngineList implements ISearchEngine {
         let result: ISearchResult[] = [];
 
         let searchPromises = [];
-                
+
         for (const engine of this.searchEngines) {
             searchPromises.push(engine.search(searchTerm));
         }

@@ -12,11 +12,11 @@ export class KauflandPriceSearchEngine extends SearchEngineBase {
         const baseUrl = 'https://www.kaufland.de';
         const $ = await this.requestWebsite(`${baseUrl}/item/search/?search_value=${encodeURIComponent(searchTerm)}`);
 
-        let titles: any[] = this.collectText($, '.product__title');
-        let prices: any[] = this.collectText($, '.price');
-        let ratings: any[] = this.collectText($, '.product-rating__count');
-        let links: any[] = this.collectOnAttributeAndElement($, '.results--grid', 'a', 'href', baseUrl);
-        let thumbnails: any[] = this.collectOnAttributeAndElement($, '.product__image-container', 'img', 'src');
+        let titles: string[] = this.collectText($, '.product__title');
+        let prices: string[] = this.collectText($, '.price');
+        let ratings: string[] = this.collectText($, '.product-rating__count');
+        let links: string[] = this.collectOnAttributeAndElement($, '.results--grid', 'a', 'href', baseUrl);
+        let thumbnails: string[] = this.collectOnAttributeAndElement($, '.product__image-container', 'img', 'src');
 
         // Remove Ads from arrays
 

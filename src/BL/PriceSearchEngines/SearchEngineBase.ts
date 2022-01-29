@@ -143,7 +143,7 @@ export abstract class SearchEngineBase implements ISearchEngine {
      * @returns string
      */
 
-    protected grabFirstPartAsNumber(value: string): any {
+    grabFirstPartAsNumber(value: string): any {
         if (value) return Number(value.split(/\s/)[0].replace(',', '.'));
     }
 

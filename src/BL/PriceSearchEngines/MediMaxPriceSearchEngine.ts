@@ -11,11 +11,11 @@ export class MediMaxPriceSearchEngine extends SearchEngineBase {
         const baseUrl = 'https://www.medimax.de';
         const $ = await this.requestWebsite(`${baseUrl}/search/?text=${encodeURIComponent(searchTerm)}`);
 
-        let titles: any[] = this.collectText($, '.cmsproductlist-name');
-        let links: any[] = this.collectLinks($, '.cmsproduct-list-image-link', 'href', baseUrl);
-        let prices: any[] = this.collectText($, '.cmsproductlist-price');
-        let thumbnail: any[] = this.collectOnAttributeAndElement($, '.cmsproduct-list-image-link', 'img', 'src');
-        let ratings: any[] = [];
+        let titles: string[] = this.collectText($, '.cmsproductlist-name');
+        let links: string[] = this.collectLinks($, '.cmsproduct-list-image-link', 'href', baseUrl);
+        let prices: string[] = this.collectText($, '.cmsproductlist-price');
+        let thumbnail: string[] = this.collectOnAttributeAndElement($, '.cmsproduct-list-image-link', 'img', 'src');
+        let ratings: number[] = [];
 
         const pricesFiltered = this.splitAndReplaceValue(prices, ',', 0, '.', '.');
 
