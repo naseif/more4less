@@ -63,9 +63,9 @@ const ebay = new more4less.EbayPriceSearchEngine();
 
 // or
 
-import {SearchEngine} from "more4less";
+import { SearchEngineFactory } from "more4less";
 
-const engine = new SearchEngine("Amazon");
+const engine = new SearchEngineFactory().GetSearchEngine("Amazon");
 
 (async () => {
     const getProduct = await engine.search("alexa firestick");
@@ -79,7 +79,7 @@ const engine = new SearchEngine("Amazon");
 ```ts
 import * as more4less from "more4less";
 
-const engine =  new SearchEngine("All");
+const engine = new SearchEngineFactory().GetSearchEngine("All");
 
 (async () => {
     const getProduct = await engine.search("alexa firestick");

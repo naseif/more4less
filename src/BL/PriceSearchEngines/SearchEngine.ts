@@ -1,6 +1,6 @@
 import { ISearchEngine } from '../..';
-import { ISearchResult } from '../../Interfaces';
 import * as engines from '../index';
+import { SearchEngineList } from './SearchEngineList';
 
 export type TSearchEngine =
     | 'Alternate'
@@ -18,90 +18,69 @@ export type TSearchEngine =
     | 'Saturn'
     | 'All';
 
-export class SearchEngine implements ISearchEngine {
-    /**
-     * The desired search engine to use
-     */
-
-    searchEngine: TSearchEngine;
-
-    /**
-     * The desired search engine to use
-     * @param TSearchEngine searchEngine
-     */
-
-    constructor(searchEngine: TSearchEngine) {
-        this.searchEngine = searchEngine;
-    }
-
+export class SearchEngineFactory {
     /**
      * searches for the product through the search engines you defined
      * @param string searchTerm query of the product name
      * @returns ISearchResult[]
      */
 
-    async search(searchTerm: string): Promise<ISearchResult[]> {
-        let result: ISearchResult[] = [];
-
-        switch (this.searchEngine) {
+    GetSearchEngine(searchEngineName: TSearchEngine): ISearchEngine {
+        switch (searchEngineName) {
             case 'Alternate':
-                result = await new engines.AlternatePriceSearchEngine().search(searchTerm);
-                break;
+                return new engines.AlternatePriceSearchEngine();
             case 'Amazon':
-                result = await new engines.AmazonPriceSearchEngine2().search(searchTerm);
-                break;
+                return new engines.AmazonPriceSearchEngine2();
+
             case 'Clevertronic':
-                result = await new engines.ClevertronicPriceSearchEngine().search(searchTerm);
-                break;
+                return new engines.ClevertronicPriceSearchEngine();
+
             case 'Cyberport':
-                result = await new engines.CyberportPriceSearchEngine().search(searchTerm);
-                break;
+                return new engines.CyberportPriceSearchEngine();
+
             case 'Ebay':
-                result = await new engines.EbayPriceSearchEngine().search(searchTerm);
-                break;
+                return new engines.EbayPriceSearchEngine();
+
             case 'Kaufland':
-                result = await new engines.KauflandPriceSearchEngine().search(searchTerm);
-                break;
+                return new engines.KauflandPriceSearchEngine();
+
             case 'MediaMarkt':
-                result = await new engines.MediaMarktPriceSearchEngine().search(searchTerm);
-                break;
+                return new engines.MediaMarktPriceSearchEngine();
+
             case 'MediMax':
-                result = await new engines.MediMaxPriceSearchEngine().search(searchTerm);
-                break;
+                return new engines.MediMaxPriceSearchEngine();
+
             case 'Mindfactory':
-                result = await new engines.MindfactoryPriceSearchEngine().search(searchTerm);
-                break;
+                return new engines.MindfactoryPriceSearchEngine();
+
             case 'Otto':
-                result = await new engines.OttoPriceSearchEngine().search(searchTerm);
-                break;
+                return new engines.OttoPriceSearchEngine();
+
             case 'Proshop':
-                result = await new engines.ProshopPriceSearchEngine().search(searchTerm);
-                break;
+                return new engines.ProshopPriceSearchEngine();
+
             case 'Saturn':
-                result = await new engines.SaturnPriceSearchEngine().search(searchTerm);
-                break;
+                return new engines.SaturnPriceSearchEngine();
+
             case 'Bücher.de':
-                result = await new engines.BuecherPriceSearchEngine().search(searchTerm);
-                break;
-            case 'All':
-                const getAll = await Promise.all([
-                    new engines.AlternatePriceSearchEngine().search(searchTerm),
-                    new engines.AmazonPriceSearchEngine2().search(searchTerm),
-                    new engines.ClevertronicPriceSearchEngine().search(searchTerm),
-                    new engines.EbayPriceSearchEngine().search(searchTerm),
-                    new engines.KauflandPriceSearchEngine().search(searchTerm),
-                    new engines.MediaMarktPriceSearchEngine().search(searchTerm),
-                    new engines.OttoPriceSearchEngine().search(searchTerm),
-                    new engines.ProshopPriceSearchEngine().search(searchTerm),
-                    new engines.SaturnPriceSearchEngine().search(searchTerm),
-                    new engines.BuecherPriceSearchEngine().search(searchTerm),
-                    new engines.CyberportPriceSearchEngine().search(searchTerm),
-                    new engines.MediMaxPriceSearchEngine().search(searchTerm),
-                    new engines.MindfactoryPriceSearchEngine().search(searchTerm)
+                return new engines.BuecherPriceSearchEngine();
+
+            default:
+                return new SearchEngineList([
+                    new engines.AlternatePriceSearchEngine(),
+                    new engines.AmazonPriceSearchEngine2(),
+                    new engines.ClevertronicPriceSearchEngine(),
+                    new engines.EbayPriceSearchEngine(),
+                    new engines.KauflandPriceSearchEngine(),
+                    new engines.MediaMarktPriceSearchEngine(),
+                    new engines.OttoPriceSearchEngine(),
+                    new engines.ProshopPriceSearchEngine(),
+                    new engines.SaturnPriceSearchEngine(),
+                    new engines.BuecherPriceSearchEngine(),
+                    new engines.CyberportPriceSearchEngine(),
+                    new engines.MediMaxPriceSearchEngine(),
+                    new engines.MindfactoryPriceSearchEngine()
                 ]);
-                result = getAll.flat(1);
-                break;
         }
-        return result;
     }
 }
