@@ -6,3 +6,4 @@ package-lock.json
 docs
 test.js
 dev.ps1
+tsup.config.json
