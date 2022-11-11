@@ -17,7 +17,8 @@ export class AmazonPriceSearchEngine2 extends SearchEngineBase {
         let prices: any[] = this.collectText($, '.a-price-whole');
         let links: any[] = [];
         let ratings: any[] = [];
-        let thumbnails: any[] = this.collectLinks($, '.s-image', 'src');
+
+        let thumbnails: any[] = this.collectLinks($, '.s-image-fixed-height > img', 'src');
 
         $('.s-title-instructions-style')
             .find('h2 > a')

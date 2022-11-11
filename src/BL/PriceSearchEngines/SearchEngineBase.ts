@@ -106,12 +106,18 @@ export abstract class SearchEngineBase implements ISearchEngine {
      * @returns string[] Array containing all matched results
      */
 
-    protected collectText($: cheerio.CheerioAPI, selector: string): string[] {
+    protected collectText($: cheerio.CheerioAPI, selector: string, price?: boolean): string[] {
         let result: string[] = [];
 
         $(selector).each(function (_: number, value: any) {
             if ($(value).text()) {
-                result.push($(value).text().trim());
+                if (!price) {
+                    result.push($(value).text().trim());
+                    return;
+                }
+                if (/^\d/.test($(value).text().trim())) {
+                    result.push($(value).text().trim());
+                }
             }
         });
 

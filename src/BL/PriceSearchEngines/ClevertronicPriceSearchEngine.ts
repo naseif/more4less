@@ -12,10 +12,10 @@ export class ClevertronicPriceSearchEngine extends SearchEngineBase {
         const baseUrl = 'https://www.clevertronic.de';
         const $ = await this.requestWebsite(`${baseUrl}/products?s=${encodeURIComponent(searchTerm)}`);
 
-        let titles: any[] = this.collectText($, '.product_box_name');
+        let titles: any[] = this.collectText($, '.product_box_name', false);
         let ratings: any[] = [];
         let thumbnails: any[] = [];
-        let prices: any[] = this.collectText($, '.product_box_price');
+        let prices: any[] = this.collectText($, '.product_box_price > span', true);
         let links: any[] = this.collectLinks($, '.js_target_link', 'href', baseUrl);
 
         $('.product_box_img')
@@ -27,10 +27,10 @@ export class ClevertronicPriceSearchEngine extends SearchEngineBase {
                     thumbnails.push(baseUrl + $(value).data('pagespeed-lazy-src'));
                 }
             });
-        const pricesFilterd = this.splitAndReplaceValue(prices, ' ', 1, ',', '.');
-
+        const pricesFilterd = this.splitAndReplaceValue(prices, ' ', 0, ',', '.');
         let result: ISearchResult[] = [];
 
+        console.log(titles, thumbnails, pricesFilterd, links);
         titles.forEach((title, index) => {
             result.push(
                 new SearchResult(
